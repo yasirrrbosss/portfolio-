@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - RAD Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="img/logo.png" type="image/gif">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html" class="logo">RAD</a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="project.html">My Project</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="social-icons">
+                <a href="https://instagram.com/mrafiad__" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://github.com/yasirrrbosss" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <button class="toggle-theme" aria-label="Toggle dark/light theme"><i class="fas fa-moon"></i></button>
+            </div>
+        </header>
+
+        <section class="contact-section">
+            <h1 class="section-title">Get In Touch</h1>
+            <div class="section-subtitle">Let's discuss <a href="#">Web3 opportunities</a> and collaborations</div>
+
+            <div class="contact-grid">
+                <!-- Contact Information -->
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h3 class="contact-title">Email</h3>
+                        <p class="contact-detail">
+                            <a href="mailto:yasirrrbosss@gmail.com">yasirrrbosss@gmail.com</a>
+                        </p>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h3 class="contact-title">Location</h3>
+                        <p class="contact-detail">
+                            Malang, East Java<br>Indonesia
+                        </p>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h3 class="contact-title">Response Time</h3>
+                        <p class="contact-detail">
+                            Usually within 24 hours
+                        </p>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3 class="contact-title">Currently</h3>
+                        <p class="contact-detail">
+                            Information Systems Student<br>Merdeka University Malang
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="contact-form">
+                    <h2 class="form-title">Send a Message</h2>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" id="name" name="name" class="form-input" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" id="email" name="email" class="form-input" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject" class="form-label">Subject</label>
+                            <input type="text" id="subject" name="subject" class="form-input" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea id="message" name="message" class="form-textarea" required></textarea>
+                        </div>
+
+                        <button type="submit" class="form-button">Send Message</button>
+                        
+                        <div id="responseMessage" class="response-message"></div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Social Links -->
+            <div class="social-section">
+                <h2 class="social-title">Connect With Me</h2>
+                <div class="social-links">
+                    <a href="https://instagram.com/mrafiad__" target="_blank" class="social-link">
+                        <i class="fab fa-instagram"></i>
+                        <span>Instagram</span>
+                    </a>
+
+                    <a href="https://github.com/yasirrrbosss" target="_blank" class="social-link">
+                        <i class="fab fa-github"></i>
+                        <span>GitHub</span>
+                    </a>
+
+                    <a href="https://twitter.com/zenric_" target="_blank" class="social-link">
+                        <i class="fab fa-twitter"></i>
+                        <span>Twitter</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Contact form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const responseMessage = document.getElementById('responseMessage');
+            const formData = new FormData(this);
+            
+            // Show loading state
+            const submitButton = this.querySelector('.form-button');
+            const originalText = submitButton.textContent;
+            submitButton.textContent = 'Sending...';
+            submitButton.disabled = true;
+            
+            // Simulate form submission (replace with actual endpoint)
+            setTimeout(() => {
+                // Show success message
+                responseMessage.textContent = 'Thank you! Your message has been sent successfully. I\'ll get back to you soon.';
+                responseMessage.className = 'response-message success';
+                responseMessage.style.display = 'block';
+                
+                // Reset form
+                this.reset();
+                
+                // Reset button
+                submitButton.textContent = originalText;
+                submitButton.disabled = false;
+                
+                // Hide message after 5 seconds
+                setTimeout(() => {
+                    responseMessage.style.display = 'none';
+                }, 5000);
+            }, 1500);
+        });
+
+        // Theme toggle functionality - exactly matching your existing pages
+        const themeToggle = document.querySelector('.toggle-theme');
+        const themeIcon = themeToggle.querySelector('i');
+        let isDarkTheme = true;
+
+        themeToggle.addEventListener('click', () => {
+            if (isDarkTheme) {
+                // Switch to light mode
+                document.body.style.backgroundColor = '#f5f5f5';
+                document.body.style.color = '#333';
+                
+                // Update links and icons colors
+                document.querySelectorAll('.logo, .social-icons a, .toggle-theme').forEach(el => {
+                    el.style.color = '#333';
+                });
+                
+                document.querySelectorAll('nav ul li a').forEach(a => {
+                    a.style.color = '#4169e1';
+                });
+                
+                // Update cards and form for light mode
+                document.querySelectorAll('.contact-card, .contact-form').forEach(card => {
+                    card.style.background = 'rgba(0, 0, 0, 0.05)';
+                    card.style.borderColor = 'rgba(0, 0, 0, 0.1)';
+                });
+                
+                document.querySelectorAll('.social-link').forEach(link => {
+                    link.style.background = 'rgba(0, 0, 0, 0.05)';
+                    link.style.borderColor = 'rgba(0, 0, 0, 0.1)';
+                });
+                
+                // Update form inputs
+                document.querySelectorAll('.form-input, .form-textarea').forEach(input => {
+                    input.style.background = 'rgba(0, 0, 0, 0.05)';
+                    input.style.borderColor = 'rgba(0, 0, 0, 0.2)';
+                    input.style.color = '#333';
+                });
+                
+                // Update text colors
+                document.querySelectorAll('.contact-title, .form-title, .social-title').forEach(text => {
+                    text.style.color = '#333';
+                });
+                
+                document.querySelectorAll('.contact-detail, .section-subtitle, .form-label').forEach(text => {
+                    text.style.color = '#666';
+                });
+                
+                // Change moon icon to sun icon
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            } else {
+                // Switch to dark mode
+                document.body.style.backgroundColor = '#111';
+                document.body.style.color = '#fff';
+                
+                // Reset colors
+                document.querySelectorAll('.logo, .social-icons a, .toggle-theme').forEach(el => {
+                    el.style.color = '#fff';
+                });
+                
+                document.querySelectorAll('nav ul li a').forEach(a => {
+                    a.style.color = '#6b87c9';
+                });
+                
+                // Reset cards and form
+                document.querySelectorAll('.contact-card, .contact-form, .social-link').forEach(card => {
+                    card.style.background = 'rgba(255, 255, 255, 0.05)';
+                    card.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+                });
+                
+                // Reset form inputs
+                document.querySelectorAll('.form-input, .form-textarea').forEach(input => {
+                    input.style.background = 'rgba(255, 255, 255, 0.05)';
+                    input.style.borderColor = 'rgba(255, 255, 255, 0.2)';
+                    input.style.color = '#fff';
+                });
+                
+                // Reset text colors
+                document.querySelectorAll('.contact-title, .form-title, .social-title').forEach(text => {
+                    text.style.color = '#fff';
+                });
+                
+                document.querySelectorAll('.contact-detail, .form-label').forEach(text => {
+                    text.style.color = '#ccc';
+                });
+                
+                document.querySelectorAll('.section-subtitle').forEach(text => {
+                    text.style.color = '#ccc';
+                });
+                
+                // Change sun icon to moon icon
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            }
+            
+            isDarkTheme = !isDarkTheme;
+        });
+    </script>
+</body>
+</html>
